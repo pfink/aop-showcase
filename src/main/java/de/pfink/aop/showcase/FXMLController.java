@@ -24,18 +24,12 @@ public class FXMLController implements Initializable {
     }  
     
     @FXML
-    private void handleHelloWorldButton(ActionEvent event) {
-        log.info("Triggered 'handleHelloWorldButton' method!");
-        
+    private void handleHelloWorldButton(ActionEvent event) {        
         label.setText("Hello World!");
-        
-        log.info("Finished 'handleHelloWorldButton' method successfully!");
     }
     
     @FXML
     private void handleGenerateAbandonedIslandButton(ActionEvent event) {
-        log.info("Triggered 'handleGenerateAbandonedIslandButton' method");
-        
         em.getTransaction().begin();        
         try {
             Island island = new Island().setName("Java").setSize(126700);
@@ -45,15 +39,11 @@ public class FXMLController implements Initializable {
         catch(Exception e) {
             em.getTransaction().rollback();
         }
-        
-        log.info("Finished 'handleGenerateAbandonedIslandButton' method successfully!");
     }
     
     
     @FXML
     private void handleGenerateIslandWith60PenguinsButton(ActionEvent event) {
-        log.info("Triggered 'handleGenerateIslandWith60PenguinsButton' method");
-        
         em.getTransaction().begin();
         try {            
             Island island = new Island().setName("Lombok").setSize(4725);
@@ -68,6 +58,5 @@ public class FXMLController implements Initializable {
         catch(Exception e) {
             em.getTransaction().rollback();
         }
-        log.info("Finished 'handleGenerateIslandWith60PenguinsButton' method successfully!");
     }  
 }
