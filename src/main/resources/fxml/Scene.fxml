@@ -6,9 +6,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320" xmlns:fx="http://javafx.com/fxml" fx:controller="de.pfink.aop.showcase.FXMLController">
+<AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="de.pfink.aop.showcase.FXMLController">
     <children>
-        <Button layoutX="126" layoutY="90" text="Click Me!" onAction="#handleButtonAction" fx:id="button" />
-        <Label layoutX="126" layoutY="120" minHeight="16" minWidth="69" fx:id="label" />
+        <Button fx:id="button" layoutX="53.0" layoutY="50.0" onAction="#handleHelloWorldButton" text="Hello World!" />
+        <Label fx:id="label" layoutX="155.0" layoutY="54.0" minHeight="16" minWidth="69" />
+        <Button fx:id="button2" layoutX="53.0" layoutY="100.0" onAction="#handleGenerateAbandonedIslandButton" text="Generate an abandoned island!" />
+        <Button fx:id="button3" layoutX="53.0" layoutY="150.0" onAction="#handleGenerateIslandWith60PenguinsButton" text="Generate an island with 60 penguins!" />        
     </children>
 </AnchorPane>

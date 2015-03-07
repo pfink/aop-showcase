@@ -2,24 +2,46 @@ package de.pfink.aop.showcase;
 
 import javafx.application.Application;
 import static javafx.application.Application.launch;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import lombok.Getter;
 
 
 public class MainApp extends Application {
-
+    @Getter
+    private static EntityManager entityManager;
+    
     @Override
     public void start(Stage stage) throws Exception {
+        initPersistence();
+        
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Scene.fxml"));
         
         Scene scene = new Scene(root);
         scene.getStylesheets().add("/styles/Styles.css");
         
-        stage.setTitle("JavaFX and Maven");
+        stage.setTitle("Islands with penguins");
+        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent t) {
+                Platform.exit();
+            }
+        });
         stage.setScene(scene);
         stage.show();
+    }
+    
+    private void initPersistence() {
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("de.pfink.aop.showcase");
+        entityManager = entityManagerFactory.createEntityManager();
     }
 
     /**
