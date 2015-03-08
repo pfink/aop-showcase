@@ -44,6 +44,7 @@ public class FXMLController implements Initializable {
         }
         catch(Exception e) {
             em.getTransaction().rollback();
+            throw e;
         }
         
         log.info("Finished 'handleGenerateAbandonedIslandButton' method successfully!");
@@ -67,6 +68,7 @@ public class FXMLController implements Initializable {
         }
         catch(Exception e) {
             em.getTransaction().rollback();
+            throw e;
         }
         log.info("Finished 'handleGenerateIslandWith60PenguinsButton' method successfully!");
     }  
