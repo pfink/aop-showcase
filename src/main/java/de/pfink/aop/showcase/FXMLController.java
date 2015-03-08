@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 import lombok.extern.java.Log;
 
 @Log
@@ -29,34 +30,22 @@ public class FXMLController implements Initializable {
     }
     
     @FXML
+    @Transactional
     private void handleGenerateAbandonedIslandButton(ActionEvent event) {
-        em.getTransaction().begin();        
-        try {
-            Island island = new Island().setName("Java").setSize(126700);
-            em.persist(island);
-            em.getTransaction().commit();
-        }
-        catch(Exception e) {
-            em.getTransaction().rollback();
-        }
+        Island island = new Island().setName("Java").setSize(126700);
+        em.persist(island);
     }
     
     
     @FXML
-    private void handleGenerateIslandWith60PenguinsButton(ActionEvent event) {
-        em.getTransaction().begin();
-        try {            
-            Island island = new Island().setName("Lombok").setSize(4725);
-            em.persist(island);        
-            for(int i=0; i < 60; i++) {
-                Penguin penguin = new Penguin();
-                penguin.setName("Lombok-Penguin #"+i).setHome(island);
-                em.persist(penguin);
-            }
-            em.getTransaction().commit();
-        }
-        catch(Exception e) {
-            em.getTransaction().rollback();
+    @Transactional
+    private void handleGenerateIslandWith60PenguinsButton(ActionEvent event) {     
+        Island island = new Island().setName("Lombok").setSize(4725);
+        em.persist(island);        
+        for(int i=0; i < 60; i++) {
+            Penguin penguin = new Penguin();
+            penguin.setName("Lombok-Penguin #"+i).setHome(island);
+            em.persist(penguin);
         }
     }  
 }
