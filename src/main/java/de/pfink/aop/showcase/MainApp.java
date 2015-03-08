@@ -33,6 +33,7 @@ public class MainApp extends Application {
             @Override
             public void handle(WindowEvent t) {
                 Platform.exit();
+                System.exit(0);
             }
         });
         stage.setScene(scene);
