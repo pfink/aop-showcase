@@ -15,15 +15,15 @@ import org.aspectj.lang.annotation.Pointcut;
 @Aspect
 @Log
 public class MethodTracingAspect {
-    @Pointcut("execution(* *(..))")
-    public void allMethodExecutions() {}
+    @Pointcut("execution(* de.pfink.aop.showcase.*.*(..))")
+    public void methodsInShowcasePackageWithoutSubPackages() {}
 
-    @Before("de.pfink.aop.showcase.aspects.MethodTracingAspect.allMethodExecutions()")
+    @Before("de.pfink.aop.showcase.aspects.MethodTracingAspect.methodsInShowcasePackageWithoutSubPackages()")
     public void traceOnMethodBegin(JoinPoint joinPoint) {
         log.log(Level.INFO, "Triggered ''{0}'' method!", joinPoint.getSignature().getName());        
     }
     
-    @After("de.pfink.aop.showcase.aspects.MethodTracingAspect.allMethodExecutions()")
+    @After("de.pfink.aop.showcase.aspects.MethodTracingAspect.methodsInShowcasePackageWithoutSubPackages()")
     public void traceOnMethodEnd(JoinPoint joinPoint) {
         log.log(Level.INFO, "Finished ''{0}'' method successfully!", joinPoint.getSignature().getName());     
     }
