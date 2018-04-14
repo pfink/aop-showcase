@@ -1,5 +1,5 @@
 # Aspect Oriented Programming with AspectJ - Showcase
-
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
 ## Preconditions
 
 * JDK 8 installed
